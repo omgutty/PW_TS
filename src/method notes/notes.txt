@@ -1,0 +1,247 @@
+15. Interview Questions on Methods
+1. What is a method in TypeScript?
+A method is a function defined inside a class that performs operations related to that object.
+
+2. Difference between function and method?
+Function
+Method
+independent
+inside class
+global
+object related
+
+
+3. What is a static method?
+A method that belongs to the class itself, not to objects.
+
+4. What is method overloading?
+Using the same method name with different parameter types.
+
+
+Method Overloading in TypeScript 
+Method Overloading is an important concept in TypeScript that allows a method to perform different tasks using the same method name but different parameters. This feature helps write clean, reusable, and flexible code.
+TypeScript method overloading works differently compared to languages like Java or C++, but the concept is similar.
+
+1. What is Method Overloading?
+Definition
+Method Overloading means defining multiple method signatures with the same method name but different parameter types or counts.
+However, in TypeScript:
+Multiple method declarations (signatures) are written.
+Only one implementation is provided.
+
+Simple Example Concept
+Imagine a Calculator.
+It should support:
+add(10,20) → numbers
+add("Hello","World") → strings
+Both should use the same method name add().
+
+2. Syntax of Method Overloading
+methodName(param1:type, param2:type):returnType;
+methodName(param1:type):returnType;
+
+methodName(param1:any, param2?:any):any{
+   // implementation
+}
+Structure
+Part
+Meaning
+Overload signatures
+method declarations
+Implementation
+actual method logic
+any
+handles different types
+
+
+3. Basic Example of Method Overloading
+class Calculator {
+
+    add(a:number, b:number):number;
+    add(a:string, b:string):string;
+
+    add(a:any, b:any):any{
+        return a + b;
+    }
+
+}
+
+let calc = new Calculator();
+
+console.log(calc.add(10,20));
+console.log(calc.add("Hello"," World"));
+Output
+30
+Hello World
+
+Explanation
+1️⃣ Two method signatures
+add(a:number, b:number)
+add(a:string, b:string)
+2️⃣ One implementation
+add(a:any, b:any)
+The implementation handles all cases.
+
+4. Method Overloading with Different Number of Parameters
+Sometimes the number of parameters may change.
+Example
+class Printer {
+
+    print(text:string):void;
+    print(text:string, copies:number):void;
+
+    print(text:string, copies?:number):void{
+
+        if(copies){
+            for(let i=0;i<copies;i++){
+                console.log(text);
+            }
+        }
+        else{
+            console.log(text);
+        }
+
+    }
+
+}
+
+let p = new Printer();
+
+p.print("Hello");
+p.print("Welcome",3);
+Output
+Hello
+Welcome
+Welcome
+Welcome
+
+5. Method Overloading with Different Data Types
+Example
+class DataFormatter {
+
+    format(value:number):string;
+    format(value:string):string;
+
+    format(value:any):string{
+
+        if(typeof value === "number"){
+            return "Number: " + value;
+        }
+
+        else{
+            return "String: " + value;
+        }
+
+    }
+
+}
+
+let f = new DataFormatter();
+
+console.log(f.format(100));
+console.log(f.format("TypeScript"));
+Output
+Number: 100
+String: TypeScript
+
+6. Real-World Example (Payment System)
+class Payment {
+
+    pay(amount:number):void;
+    pay(cardNumber:string, amount:number):void;
+
+    pay(a:any, b?:any){
+
+        if(typeof a === "number"){
+            console.log("Paid cash:", a);
+        }
+
+        else{
+            console.log("Paid using card:", a, "Amount:", b);
+        }
+
+    }
+
+}
+
+let payment = new Payment();
+
+payment.pay(500);
+payment.pay("1234-5678-9999",1000);
+Output
+Paid cash: 500
+Paid using card: 1234-5678-9999 Amount: 1000
+
+7. Important Rules of Method Overloading in TypeScript
+Rule 1
+There must be multiple method signatures.
+Rule 2
+There must be only one implementation.
+Rule 3
+The implementation must support all overload signatures.
+Rule 4
+Implementation parameters usually use any or union types.
+
+8. Method Overloading vs Method Overriding
+Feature
+Overloading
+Overriding
+Method name
+Same
+Same
+Parameters
+Different
+Same
+Class
+Same class
+Parent & child class
+Purpose
+Flexibility
+Runtime behavior
+
+
+9. Advantages of Method Overloading
+✔ Improves code readability
+✔ Reuse the same method name
+✔ Reduces code duplication
+✔ Makes APIs easier to use
+✔ Supports multiple input formats
+
+10. Interview Questions
+1. What is method overloading in TypeScript?
+Method overloading allows defining multiple method signatures with the same name but different parameters.
+
+2. Does TypeScript support true method overloading?
+TypeScript supports compile-time method overloading using signatures, but only one implementation is allowed.
+
+3. Why do we use "any" in implementation?
+Because the implementation must handle all possible parameter types.
+
+4. Can we have multiple implementations?
+❌ No. Only one implementation is allowed.
+
+11. Common Mistake
+❌ Wrong
+add(a:number,b:number){}
+add(a:string,b:string){}
+This will cause an error.
+✔ Correct
+add(a:number,b:number):number;
+add(a:string,b:string):string;
+
+add(a:any,b:any):any{
+ return a+b;
+}
+
+12. Summary
+Concept
+Meaning
+Method Overloading
+Same method name with different parameters
+Overload Signatures
+Multiple declarations
+Implementation
+Single function
+Benefit
+Flexible and reusable code
+
