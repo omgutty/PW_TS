@@ -123,6 +123,7 @@ class Parent6{
 }
 
 class Child6 extends Parent6{
+    
 
     test(){
         console.log(this.a); // allowed
@@ -132,6 +133,7 @@ class Child6 extends Parent6{
 }
 let obj6= new Child6();
 obj6.test();
+
 
 ///////////////////////////////////////
 //7. Child Object Cannot Access Protected Outside
