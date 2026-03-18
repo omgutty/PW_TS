@@ -10,6 +10,11 @@
     "module": "nodenext",
     "target": "esnext",
     "types": [],
+    //without this also it is working but it is recommended to add this for nodejs environment
+    // i need to import with .js extension in ts file because of module nodenext and 
+    // for that i need to add this option
+    //"allowImportingTsExtensions": true
+    // For nodejs:
    
   },
   "include":[
