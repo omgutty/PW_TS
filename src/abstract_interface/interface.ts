@@ -18,6 +18,15 @@ interface transportservice  {
 interface service  {
 
 }
+export interface schoolservice{
+    attendence():void;
+    ranks():void;
+}
+
+export interface tutionservice extends schoolservice{
+    limitedteaching():void;
+}
 
 //we can export like this as well 
 export {service,transportservice}
+

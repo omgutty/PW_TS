@@ -1,6 +1,7 @@
-import {Airlineservice,Hottelservice,transportservice} from "./interface.js"
+import {Airlineservice,Hottelservice,transportservice,tutionservice} from "./interface.js"
+import { parentclass } from "./parentclass.js";
 
-export class customer implements Airlineservice ,Hottelservice,transportservice{
+export class Customer extends parentclass implements Airlineservice ,Hottelservice,transportservice,tutionservice {
 
     checkin():void{
         console.log("checking in to airport");
@@ -30,7 +31,23 @@ export class customer implements Airlineservice ,Hottelservice,transportservice{
     addressmethod(){
         console.log("my own addrss own method");
     }
+    
+    //tution service interface imported, 
+    limitedteaching(): void {
+        console.log("tution service limited teaching ")
+    }
+
+    //tution service extends another school servie interface so there methods also must imppliments
+    attendence(): void {
+        console.log("Attendence is mmust in school ")
+    }
+    ranks(): void {
+        console.log("ranks will come in school ")
+    }
 
 }
+
+
+
 
 //instead of using this class methods here, i am exporting this class to antoher file 
