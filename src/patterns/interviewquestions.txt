@@ -1,0 +1,49 @@
+Private Constructor
+Q: What is a private constructor in TypeScript?
+A: A constructor marked 'private' that prevents new ClassName() 
+from being called outside the class. It is used to control object creation
+ — allowing instantiation only through static methods inside the class itself.
+Q: How do you access a class with a private constructor?
+A: Through public static methods defined on the class. 
+For example: Customer.getInstance() for Singleton, or Util.readPDF() for a Utility class. 
+You never use 'new' from outside.
+Q: Can a subclass extend a class with a private constructor?
+A: No. If you write 'class Person extends Employee' 
+where Employee has a private constructor, TypeScript will throw a compile-time error
+ because the constructor is not accessible to the subclass.
+
+Singleton Pattern
+Q: What is the Singleton Pattern?
+A: A design pattern that ensures only ONE instance of a class is ever created.
+ No matter how many times you call getInstance(), it always returns the same object.
+  Used for shared resources like DB connections and configuration.
+Q: How do you implement Singleton in TypeScript?
+A: Three steps: (1) private constructor() to block 'new', (2) private static instance: MyClass 
+to hold the ONE instance, (3) public static getInstance(): MyClass that creates the instance only if it does not exist, then returns it.
+Q: What does console.log(c1 === c2) print for a Singleton?
+A: TRUE. Because both c1 and c2 are returned by getInstance() which always returns the same object.
+ They both point to the same memory address, so the strict equality === is true.
+Q: Can Singleton support parallel execution?
+A: NO. Singleton uses a single static object shared across all code. 
+In parallel execution, every thread would share the same object, causing conflicts. 
+Singleton is only suitable for sequential (single-threaded) execution.
+
+Builder Pattern
+Q: What is the Builder Pattern?
+A: A design pattern that creates objects step-by-step using method chaining. 
+Each step method returns 'this' (the current object) so the next method can be called immediately. 
+static builder() creates the object; build() ends the chain.
+Q: What does 'return this' do in the Builder Pattern?
+A: It returns the current object reference so you can immediately call the next method on the same object. 
+Without 'return this', method chaining would be impossible because each method would return nothing and the chain would break.
+Q: What is the role of the static builder() method?
+A: It is the ONLY place 'new' is used (since the constructor is private). 
+It creates a fresh Shop object and returns it to start the chain. 
+Every call to builder() creates a completely new independent object.
+Q: Where is Builder Pattern used in Selenium?
+A: In the Selenium Actions class. For 
+example: act.clickAndHold(ele).moveToElement(ele).release().build(). Each method returns the Actions object enabling chaining, 
+and build() compiles the composite action. perform() executes it.
+Q: What is the difference between Singleton and Builder in terms of object creation?
+A: Singleton always returns the SAME object — getInstance()
+ will return the exact same memory address every time. Builder creates a NEW object each time builder() is called — each chain is independent and gets its own fresh object.
