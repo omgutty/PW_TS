@@ -11,13 +11,15 @@ export class dashboardpage extends App_abstractclass{
     }
 
     override method1():void{
+       
         console.log("child method overrided from parent class");
     }
+    
 
 
 }
 
-let obj=new dashboardpage();
+let obj=new dashboardpage("sachin",34);
 obj.title();
 obj.pageurl();
 obj.method1();

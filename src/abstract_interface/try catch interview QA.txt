@@ -1,0 +1,10 @@
+💡 Interview Tips
+Q: What is a type alias in TypeScript?
+A: A type alias creates a named type using the type keyword, e.g. type User = {id: number; name: string;}. It makes code more readable and reusable.
+
+Q: What happens if both catch and finally have return statements?
+A: The finally return always wins and overrides the catch return.
+
+Q: Why do we re-throw errors in Playwright tests?
+A: Because Playwright marks a test as PASSED unless an error actually propagates out. Swallowing errors hides failures.
+
