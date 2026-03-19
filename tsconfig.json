@@ -19,7 +19,7 @@
   },
   "include":[
     "src/**/*.ts"
-  ],
+, "src/test.js"  ],
   "exclude":[
     "dist"
   ]
