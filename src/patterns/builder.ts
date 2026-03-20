@@ -1,6 +1,6 @@
 export class Shop{
     
-    private constructor(){
+    public constructor(){
 
     }
 
@@ -54,3 +54,6 @@ export class Shop{
 }
 
 Shop.Builder().login().Search().addTocart().payment().logout().build();
+
+
+//////////////////////////////
