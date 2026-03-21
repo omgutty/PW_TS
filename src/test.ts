@@ -392,3 +392,120 @@ Flow.start().step1().step2().finish();
 // Step 1
 // Step 2
 // Done
+
+
+//abstract and interface question:
+//Question 11:
+abstract class Apppage {
+
+  constructor(name: string, time: number) {
+
+    console.log('abstract constructor');
+
+  }
+
+  abstract title(): void;
+
+  abstract pageurl(): void;
+
+  loadingTime(): void { console.log('page loading'); }
+
+}
+
+ 
+
+class DashBoardPage extends Apppage {
+
+  constructor() { super('amazon', 40); }
+
+  title(): void { console.log('implementation1'); }
+
+  pageurl(): void { console.log('implementation1'); }
+
+  override loadingTime(): void { console.log('page child loading'); }
+
+}
+
+ 
+
+let newobj = new DashBoardPage();
+
+newobj.title();
+
+newobj.pageurl();
+
+newobj.loadingTime();
+
+// It will print the following output in order:
+
+// abstract constructor 
+// implementation1
+// implementation1
+// page child loading
+
+///////
+//question 12:
+abstract class Vehicle {
+
+  constructor(type: string) {
+
+    console.log('Vehicle: ' + type);
+
+  }
+
+  abstract start(): void;
+
+  stop(): void { console.log('Vehicle stopped'); }
+
+}
+
+ 
+
+class Car extends Vehicle {
+
+  constructor() { super('Car'); }
+
+  start(): void { console.log('Car started'); }
+
+}
+
+ 
+
+let c2 = new Car();
+
+c2.start();
+
+c2.stop();
+
+//question 13:
+ abstract class Animal {
+
+  constructor() { console.log('Animal created'); }
+
+  abstract sound(): void;
+
+  breathe(): void { console.log('Animal breathing'); }
+
+}
+
+
+class Dog extends Animal {
+
+  constructor() { super(); }
+
+  sound(): void { console.log('Woof!'); }
+
+  override breathe(): void { console.log('Dog breathing fast'); }
+
+}
+
+let d = new Dog();
+
+d.sound();
+
+d.breathe();
+// It will print the following output in order:
+
+// Animal created
+// Woof!
+// Dog breathing fast

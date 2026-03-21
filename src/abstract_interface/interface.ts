@@ -23,7 +23,7 @@ export interface schoolservice{
     ranks():void;
 }
 
-export interface tutionservice extends schoolservice{
+export interface tutionservice extends schoolservice,service{
     limitedteaching():void;
 }
 

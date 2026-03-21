@@ -23,3 +23,5 @@ let obj=new dashboardpage("sachin",34);
 obj.title();
 obj.pageurl();
 obj.method1();
+obj.age;
+obj.name;

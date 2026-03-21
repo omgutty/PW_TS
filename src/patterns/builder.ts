@@ -47,13 +47,15 @@ export class Shop{
     //as it ends the chain and returning nothing. 
     //same as actions class in selenium, 
     //end chaing 
-    build():void{
+    build():Shop{
         console.log("Email is sent- Shopping is done");
+   
+        return this;
     }
 
 }
 
-Shop.Builder().login().Search().addTocart().payment().logout().build();
+Shop.Builder().login().Search().addTocart().payment().logout();
 
 
 //////////////////////////////
